@@ -1,4 +1,5 @@
-@import-normalize; /* bring in normalize.css styles */
+@import-normalize;
+/* bring in normalize.css styles */
 
 body {
   margin: 0;
@@ -13,6 +14,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 html {
   box-sizing: border-box;
   width: 100vw;
@@ -187,28 +189,32 @@ img {
   z-index: 1200;
 }
 
-
-.Modal {
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  right: 0;
-  left: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+.Modal-div {
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
-  margin: auto;
-}
-.ModalContent {
-  padding: 50px;
-max-width: 1000px;
 }
 
+.Modal {
+  z-index: 1;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+
+}
+
+.Modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #252424cc;
+  height: 100%;
+  width: 100%;
+}
 /*
 * Стили компонента Buton (Load more)
 */
@@ -238,3 +244,9 @@ max-width: 1000px;
   background-color: #303f9f;
 }
 
+.Spinner {
+  display: flex;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+}

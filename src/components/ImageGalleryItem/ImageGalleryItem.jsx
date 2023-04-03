@@ -9,7 +9,11 @@ export class ImageGalleryItem extends Component {
 
   show = () => this.setState({ isOpen: true });
 
-  hide = () => this.setState({ isOpen: false });
+  hide = (event) => {
+    console.log(event)
+    console.log(event.currentTarget)
+    this.setState({ isOpen: false });
+  }
 
   render() {
     const { image } = this.props;
