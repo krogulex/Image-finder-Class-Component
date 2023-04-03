@@ -4,11 +4,11 @@ import { Component } from 'react';
 export class Button extends Component {
   render() {
 
-    const { LoadMore } = this.props
+    const { handleLoadMore } = this.props
 
     return (
       <div className='Button-more'>
-        <button className="Button">Load More</button>
+        <button className="Button" onClick={handleLoadMore}>Load More</button>
       </div>
     );
   }

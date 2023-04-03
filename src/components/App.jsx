@@ -6,7 +6,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import { Button } from './Button/Button';
 
 axios.defaults.baseURL =
-  'https://pixabay.com/api/?key=33188868-874ed4f4ba7cc47db513adf3f';
+  'https://pixabay.com/api/';
 
 export class App extends Component {
   state = {
@@ -18,10 +18,7 @@ export class App extends Component {
 
   fetchImages = async (search, page) => {
     try {
-      const response = await axios.get(
-        `&q=${search}&per_page=4&page=${page}`
-      );
-      console.log(response)
+      const response = await axios.get(`?key=33188868-874ed4f4ba7cc47db513adf3f&q=${search}&per_page=4&page=${page}`);
       return response;
     } catch (error) {
       console.log(error);
@@ -34,44 +31,35 @@ export class App extends Component {
     this.setState({ isLoading: true });
 
     this.fetchImages(search, page)
-    .then (images => {
-      console.log(images.data.hits)
-      this.setState({ images: images.data.hits });
-    })
-    .catch(error => console.log(error))
-    .finally(() => this.setState({ isLoading: false }));
+      .then(images => {
+        console.log(images.data.hits);
+        this.setState(prevState => ({
+          images: [...prevState.images, ...images.data.hits],
+        }));
+        console.log(this.state)
+      })
+      .catch(error => console.log(error))
+      .finally(() => this.setState({ isLoading: false }));
   };
 
+  //Component Update
   async componentDidUpdate(prevProps, prevState) {
-    if (this.state.search !== prevState.search) {
-      this.loadImages()
+    if (this.state.search !== prevState.search && this.state.search !== '') {
+      this.setState({ images: [], page: 1 });
+      this.loadImages();
+    }
+    if (prevState.page !== this.state.page && this.state.page !== 1) {
+      this.loadImages();
     }
   }
-  handleLoadMoreImages = () => {
-  this.setState(prevState => ({ page: prevState.page + 1 }))
 
-  }
+  handleLoadMore = () => {
+    this.setState(prevState => ({ page: prevState.page + 1 }));
+  };
+
 /*   async componentDidMount() {
-    this.setState({
-      isLoading: true,
-    });
-    setTimeout(async () => {
-      const response = await this.fetchImages(
-        this.state.search,
-        this.state.page
-      ).then(() => {
-        console.log(response);
-        this.setState({ images: response.data.hits });
-        this.setState({
-          isLoading: false,
-        });
-      });
-    }, 1000);
+    this.loadImages();
   } */
-
-  async componentDidMount() {
-    this.loadImages()
-  }
 
   handleSubmit = event => {
     event.preventDefault();
@@ -82,6 +70,9 @@ export class App extends Component {
   };
 
   render() {
+
+    console.log(this.state)
+
     return (
       <div>
         <SearchBar onSubmit={this.handleSubmit} onChange={this.handleChange} />
@@ -101,7 +92,7 @@ export class App extends Component {
         ) : (
           <div>
             <ImageGallery images={this.state.images}></ImageGallery>
-{/*             <Button></Button> */}
+            <Button handleLoadMore={this.handleLoadMore}></Button>
           </div>
         )}
       </div>
