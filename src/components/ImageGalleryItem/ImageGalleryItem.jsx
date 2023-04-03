@@ -18,6 +18,8 @@ export class ImageGalleryItem extends Component {
   render() {
     const { image } = this.props;
 
+// Poprawić, bo to <li> jest w div
+
     return (
       <div>
         <li
