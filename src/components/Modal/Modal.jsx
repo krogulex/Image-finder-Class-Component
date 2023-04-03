@@ -1,9 +1,8 @@
 import { Component } from 'react';
-import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
 export class Modal extends Component {
   render() {
-    const { image, state, hide, show } = this.props;
+    const { image, state, hide } = this.props;
 
     /*     escFunction = (event) => {
         if (event.key === "Escape") {

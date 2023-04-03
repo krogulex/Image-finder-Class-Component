@@ -5,7 +5,7 @@ export class SearchBar extends Component {
 
   render() {
 
-    const { onSubmit, onChange } = this.props
+    const { onSubmit } = this.props
     return (
       <header className="Searchbar">
         <form className="SearchForm" onSubmit={onSubmit}>
