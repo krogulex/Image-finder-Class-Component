@@ -8,7 +8,7 @@ import { Modal } from './Modal/Modal';
 
 axios.defaults.baseURL = 'https://pixabay.com/api/';
 
-const per_page = 4;
+const per_page = 12;
 export class App extends Component {
   state = {
     images: [],
@@ -38,7 +38,6 @@ export class App extends Component {
     setTimeout(() => {
       this.fetchImages(search, page)
         .then(images => {
-          console.log(images);
           this.setState(prevState => ({
             images: [...prevState.images, ...images.data.hits],
             totalHits: images.data.totalHits,
