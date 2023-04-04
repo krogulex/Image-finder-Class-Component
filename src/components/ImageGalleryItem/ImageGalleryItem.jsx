@@ -9,7 +9,7 @@ export class ImageGalleryItem extends Component {
     return (
         <li
           className="ImageGalleryItem"
-          onClick={showModal}
+          onClick={() => showModal(image.largeImageURL)}
         >
           <img
             className="ImageGalleryItem-image"

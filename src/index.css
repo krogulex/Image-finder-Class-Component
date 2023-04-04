@@ -186,33 +186,32 @@ img {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1200;
-}
-
-.Modal-div {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  cursor: zoom-out;
 }
 
 .Modal {
-  z-index: 1;
-  width: 70%;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  overflow: hidden;
+}
 
+.Modal-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
   background: #252424cc;
   height: 100%;
   width: 100%;
+}
+
+.Modal-img {
+  z-index: 1000;
+  max-width: 70%;
+  cursor: zoom-out;
 }
 
 /*

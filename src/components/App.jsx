@@ -77,14 +77,10 @@ export class App extends Component {
   };
 
   showModal = (event)=> {
-/*     console.log(event);
-    console.log(event.currentTarget); */
-    this.setState({ isModal: true,  /* modalImage: modalImage */  });
+    this.setState({ isModal: true,   modalImage: event });
   };
 
   hideModal = event => {
-    console.log(event);
-    console.log(event.currentTarget);
     this.setState({ isModal: false });
   };
 
@@ -100,13 +96,15 @@ export class App extends Component {
             this.state.isLoading === false && (
               <Button handleLoadMore={this.handleLoadMore} />
             )}
-          {this.state.isModal && (
+        </div>
+        {this.state.isModal && (
+            <div className='Modal'>
             <Modal
               modalImage={this.state.modalImage}
               hideModal={this.hideModal}
             />
+            </div>
           )}
-        </div>
       </div>
     );
   }
